@@ -1,0 +1,53 @@
+<div class="list-group col-md-2 person-md">
+  <a href="main" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  Контракты</a>
+  <a href="new" class="list-group-item"><span class="glyphicon glyphicon-plus"></span>  Добавить</a>
+  <a href="view" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span>  Просмотр и редактирование</a>
+  <a href="all" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Архив</a>
+</div>
+<div class="col-md-10">
+  <h3>Сортировать по</h3>
+  <div class="col-md-6">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Только бюджетные организации
+      </label>
+      <label>
+        <input type="checkbox"> Только коммерческие организации
+      </label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Дата окончания по возрастанию
+      </label>
+      <label>
+        <input type="checkbox"> Дата окончания по убыванию
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Сортировать</button>
+  <h3>Возможно тут нужны ещё какие-то критерии сортировки?</h3>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Номер</th>
+      <th>Название организации</th>
+      <th>Статус</th>
+      <th>Дата окончания</th>
+      <th>Подробнее</th>
+      <th>История платежей</th>
+      <th>Добавить оплату</th>
+    </tr>
+    </thead>
+    <tr>
+      <td>123</td>
+      <td>123</td>
+      <td>Оплачен</td>
+      <td>01.01.2019</td>
+      <td><a href="view_each"><span class="glyphicon glyphicon-cog"></span></a></td>
+      <td><a href="payments"><span class="glyphicon glyphicon-time"></span></a></td>
+      <td><a href="pay"><span class="glyphicon glyphicon-check"></span></a></td>
+    </tr>
+  </table>
+</div>
