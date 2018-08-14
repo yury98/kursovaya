@@ -52,7 +52,7 @@
     </div>
     <div class="list-group col-md-2 person-md">
       <% if @conn.length == 0 %>
-        <p>Завершающихся контрактов нет</p>
+        <p class="list-group-item">Завершающихся контрактов нет</p>
       <% else %>
         <% @conn.each do |f| %>
           <%= link_to contracts_main_path, class: "list-group-item" do %>
