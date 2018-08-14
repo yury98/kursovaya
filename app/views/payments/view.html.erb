@@ -1,0 +1,32 @@
+<div class="list-group col-md-2 person-md">
+  <a href="plan_each" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  План / Факт</a>
+  <a href="new" class="list-group-item"><span class="glyphicon glyphicon-plus"></span>  Добавить</a>
+  <a href="view" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span>  Просмотр и редактирование</a>
+  <a href="services_each" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Расход по услугам</a>
+</div>
+<div class="col-md-10">
+  <table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Номер</th>
+    <th>Контракт</th>
+    <th>За</th>
+    <th>Сумма</th>
+    <th>Подробнее</th>
+  </tr>
+  </thead>
+  <% @pays.each do |f| %>
+    <tr>
+      <td><%= f.number %></td>
+      <td><%= Contract.where(id: f.contract_id).first.name %></td>
+      <td><%=' Месяц: ' + f.month.month.to_s + '; Год: ' + f.month.year.to_s %></td>
+      <td><%= f.summ %></td>
+      <td>
+        <%= link_to f do %>
+          <span class="glyphicon glyphicon-cog"></span>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>

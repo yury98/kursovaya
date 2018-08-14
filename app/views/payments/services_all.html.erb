@@ -1,0 +1,80 @@
+<div class="list-group col-md-2 person-md">
+  <a href="plan_each" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  План / Факт</a>
+  <a href="new" class="list-group-item"><span class="glyphicon glyphicon-plus"></span>  Добавить</a>
+  <a href="view" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span>  Просмотр и редактирование</a>
+  <a href="services_each" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Расход по услугам</a>
+</div>
+<div class="col-md-10">
+  <h3>Анализ по всем контрактам</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Сумма по плану всего (руб.)</th>
+        <th>Сумма по факту всего (руб.)</th>
+        <th>ГВС</th>
+        <th>ХВС</th>
+        <th>Вод. ГВС</th>
+        <th>Вод. ХВС</th>
+        <th>Отопление</th>
+        <th>Эксп Усл</th>
+        <th>ТБО</th>
+      </tr>
+    </thead>
+    <tr>
+      <td><%= @con.sum(:price) %></td>
+      <td><%= @pays.sum(:summ) %></td>
+      <td><%= @con.sum(:o_gvs) %></td>
+      <td><%= @con.sum(:o_hvs) %></td>
+      <td><%= @con.sum(:o_vgvs) %></td>
+      <td><%= @con.sum(:o_vhvs) %></td>
+      <td><%= @con.sum(:o_otop) %></td>
+      <td><%= @con.sum(:o_exp) %></td>
+      <td><%= @con.sum(:o_tbo) %></td>
+    </tr>
+  </table>
+  <h3>Анализ по каждому контракту</h3>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Контракт</th>
+      <th>Сумма по контракту (руб.)</th>
+      <th>Сумма по факту (руб.)</th>
+      <th>Число платежей</th>
+      <th>ГВС</th>
+      <th>ХВС</th>
+      <th>Вод. ГВС</th>
+      <th>Вод. ХВС</th>
+      <th>Отопление</th>
+      <th>Эксп Усл</th>
+      <th>ТБО</th>
+      <th>Подробнее о контракте</th>
+    </tr>
+    </thead>
+    <% @con.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.price %></td>
+        <td>
+          <% if Payment.where(contract_id: f.id, month: @date).first.nil? %>
+            0
+          <% else %>
+            <%= Payment.where(contract_id: f.id, month: @date).sum(:summ) %>
+          <% end %>
+        </td>
+        <td><%= Payment.where(contract_id: f.id, month: @date).count %></td>
+        <td><%= f.o_gvs %></td>
+        <td><%= f.o_hvs %></td>
+        <td><%= f.o_vgvs %></td>
+        <td><%= f.o_vhvs %></td>
+        <td><%= f.o_otop %></td>
+        <td><%= f.o_exp %></td>
+        <td><%= f.o_tbo %></td>
+        <td>
+          <%= link_to f do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

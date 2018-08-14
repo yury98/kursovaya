@@ -1,0 +1,52 @@
+<%= form_for @pay do |f|%>
+  <div class="form-horizontal">
+    <div class="form-group col-sm-8">
+      <%= f.label :number, 'Номер', class: 'col-sm-3 control-label'%>
+      <div class="col-sm-9">
+        <%= f.text_field :number, class: 'form-control',  placeholder: 'Номер', required: true %>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <%= f.label :date, 'От', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.date_select :date, class: 'form-control',  placeholder: 'От', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+    </div>
+    <h3 class="col-sm-offset-2">Контракт</h3>
+    <div class="form-group">
+      <%= f.label :contract_id, 'Контракт', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <% if @con.nil? %>
+          <%= f.select :contract_id, Contract.where(end_date: Time.now()..'2100-09-13').collect{ |p| [ p.name + '; Плановая сумма оплаты: ' + p.price.to_s, p.id]}, {}, {class: 'form-control'}%>
+        <% else %>
+          <%= f.select :contract_id,[[@con.name + '; Плановая сумма оплаты: ' + @con.price.to_s, @con.id]], {}, {class: 'form-control', value: @con.id}%>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :month, 'За', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-4">
+        <%= f.date_select :month, {:discard_day => true} , class: 'form-control',  placeholder: 'От', required: true%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :bank, 'Банк', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :bank, class: 'form-control',  placeholder: 'Банк', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :summ, 'Сумма', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :summ, class: 'form-control',  placeholder: 'Сумма', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Сохранить</button>
+      </div>
+    </div>
+  </div>
+<% end %>

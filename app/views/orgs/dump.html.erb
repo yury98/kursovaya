@@ -1,0 +1,34 @@
+<div class="list-group col-md-2 person-md">
+  <a href="main" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  Организации</a>
+  <a href="new" class="list-group-item"><span class="glyphicon glyphicon-plus"></span>  Добавить</a>
+  <a href="view" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span>  Просмотр и редактирование</a>
+  <a href="dump" class="list-group-item"><span class="glyphicon glyphicon-trash"></span>  Удаленные</a>
+</div>
+<div class="col-md-10">
+  <% if @orgs.length == 0 %>
+    <h3>Корзина пуста</h3>
+  <% else %>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Наименнование</th>
+        <th>Тип</th>
+        <th>Сокращенное название</th>
+        <th>Восстановить</th>
+      </tr>
+      </thead>
+      <% @orgs.each do |f| %>
+        <tr>
+          <td><%= f.name %></td>
+          <td><%= f.typ %></td>
+          <td><%= f.small_name %></td>
+          <td>
+            <%= link_to orgs_del_path(id: f), data: { confirm: 'Вы уверены?'} do %>
+              <span class="glyphicon glyphicon-ok"></span>
+            <%end%>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>

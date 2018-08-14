@@ -1,0 +1,209 @@
+<div class="list-group col-md-2 person-md">
+  <a href="main" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  Контракты</a>
+  <a href="new" class="list-group-item"><span class="glyphicon glyphicon-plus"></span>  Добавить</a>
+  <a href="view" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span>  Просмотр и редактирование</a>
+  <a href="all" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Архив</a>
+</div>
+<div class="col-md-10">
+  <div class="form-horizontal">
+    <div class="form-group col-sm-8">
+      <%= label :name, 'Название', class: 'col-sm-3 control-label'%>
+      <div class="col-sm-9">
+        <%= label :name, @con.name, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <%= label :code, 'Код', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :code, @con.code, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <h3 class="col-sm-offset-2">Организация</h3>
+    <div class="form-group">
+      <%= label :org_id, 'Организация', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :org_id, Org.where(id: @con.org_id).first.small_name, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :contragent_id, 'Контрагент', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :contragent_id, Contragent.where(id: @con.contragent_id).first.full_name, {}, {class: 'form-control'}%>
+      </div>
+    </div>
+    <h3 class="col-sm-offset-2">Предмет договра</h3>
+  <div class="form-group col-sm-4">
+    <%= label :v_gvs, 'ГВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :v_gvs, @con.v_gvs, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :t_gvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :t_gvs, @con.t_gvs, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :o_gvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :o_gvs, @con.o_gvs, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :v_hvs, 'ХВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :v_hvs, @con.v_hvs, {}, {class: 'form-control'} %></div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :t_hvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :t_hvs, @con.t_hvs, {}, {class: 'form-control'} %></div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :o_hvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :o_hvs, @con.o_hvs, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :v_vgvs, 'Водоотв. ГВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :v_vgvs, @con.v_vgvs, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :t_vgvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :t_vgvs, @con.t_vgvs, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :o_vgvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :o_vgvs, @con.o_vgvs, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :v_vhvs, 'Водоотв. ХВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :v_vhvs, @con.v_vhvs, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :t_vhvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :t_vhvs, @con.t_vhvs, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :o_vhvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :o_vhvs, @con.o_vhvs, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :v_otop, 'Отопление', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :v_otop, @con.v_otop, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :t_otop, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :t_otop, @con.t_otop, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :o_otop, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :o_otop, @con.o_otop, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :v_exp, 'Эксплуатацион. услуги', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :v_exp, @con.v_exp, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :t_exp, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :t_exp, @con.t_exp, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :o_exp, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :o_exp, @con.o_exp, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :v_tbo, 'Вывоз ТБО', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :v_tbo, @con.v_tbo, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :t_tbo, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :t_tbo, @con.t_tbo, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= label :o_tbo, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= label :o_tbo, @con.o_tbo, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <h3 class="col-sm-offset-2">Цена договра</h3>
+  <div class="form-group">
+    <%= label :price, 'Цена договора с НДС', class: 'col-sm-2 control-label'%>
+    <div class="input-group col-sm-10">
+      <%= label :price, @con.price, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+  <h3 class="col-sm-offset-2">Даты</h3>
+  <div class="form-group">
+    <%= label :podp_date, 'Дата подписания договора', class: 'col-sm-4 control-label'%>
+    <div class="col-sm-4">
+      <%= label :podp_date, @con.podp_date, {}, {class: 'form-control'} %>
+    </div><br>
+  </div>
+
+  <div class="form-group">
+    <%= label :end_date, 'Дата окончания договора', class: 'col-sm-4 control-label'%>
+    <div class="col-sm-4">
+      <%= label :end_date, @con.end_date, {}, {class: 'form-control'} %>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to contracts_edit_path(id: @con), class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-cog"></span>
+          Редактировать
+        <% end %>
+        <%= link_to payments_new_path(id: @con), class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-ruble"></span>
+          Добавить оплату
+        <% end %>
+        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> Отправить на почту</a>
+      </div>
+    </div>
+</div>
+</div>

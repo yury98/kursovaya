@@ -1,0 +1,102 @@
+<%= form_for @cont do |f|%>
+  <div class="form-horizontal">
+    <div class="form-group col-sm-8">
+      <%= f.label :name, 'Название', class: 'col-sm-3 control-label'%>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: 'form-control',  placeholder: 'Название', required: true %>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <%= f.label :code, 'Код', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :code, class: 'form-control',  placeholder: 'Код', required: true %>
+      </div>
+    </div>
+    <h3 class="col-sm-offset-2">Общие</h3>
+    <div class="form-group">
+      <%= f.label :typ, 'Юр./Физ. лицо', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.select :typ, [['Юр. лицо', 'Юр. лицо'], ['Физ. лицо', 'Физ. лицо']], {}, {class: 'form-control'}%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :group, 'Группа контрагентов', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :group, class: 'form-control',  placeholder: 'Группа контрагентов', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :full_name, 'Полное название', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :full_name, class: 'form-control',  placeholder: 'Полное название', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :inn, 'ИНН', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :inn, class: 'form-control',  placeholder: 'ИНН', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :kpp, 'КПП', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :kpp, class: 'form-control',  placeholder: 'КПП', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :code_okpo, 'Код по ОКПО', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :code_okpo, class: 'form-control',  placeholder: 'Код по ОКПО', required: true %>
+      </div>
+    </div>
+    <h3 class="col-sm-offset-2">Адреса и телефоны</h3>
+    <div class="form-group">
+      <%= f.label :u_address, 'Юридический адрес', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :u_address, class: 'form-control',  placeholder: 'Юридический адрес', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :f_address, 'Фактический адрес', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :f_address, class: 'form-control',  placeholder: 'Фактический адрес', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :tel, 'Телефон', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.telephone_field :tel, class: 'form-control',  placeholder: 'Телефон', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :other, 'Другое', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :other, class: 'form-control',  placeholder: 'Любая другая контактная информация', required: true %>
+      </div>
+    </div>
+    <h3 class="col-sm-offset-2">Банковский счет</h3>
+    <div class="form-group">
+      <%= f.label :bank_code, 'Код', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :bank_code, class: 'form-control',  placeholder: 'Код', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :code_name, 'Наименование', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :code_name, class: 'form-control',  placeholder: 'Наименование', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :bank_name, 'Банк', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :bank_name, class: 'form-control',  placeholder: 'Банк', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Сохранить</button>
+      </div>
+    </div>
+  </div>
+<% end %>

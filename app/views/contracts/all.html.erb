@@ -5,68 +5,34 @@
   <a href="all" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Архив</a>
 </div>
 <div class="col-md-10">
-  <h3>Сортировать по</h3>
-  <div class="col-md-6">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Только бюджетные организации
-      </label><br>
-      <label>
-        <input type="checkbox"> Только коммерческие организации
-      </label><br>
-      <hr>
-      <label>
-        <input type="checkbox" checked> Отопление
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Эксплуатационные услуги
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Вывоз ТБО
-      </label><br>
-
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Дата окончания по возрастанию
-      </label><br>
-      <label>
-        <input type="checkbox"> Дата окончания по убыванию
-      </label><br>
-      <hr>
-      <label>
-        <input type="checkbox" checked> ГВС
-      </label><br>
-      <label>
-        <input type="checkbox" checked> ХВС
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Водоотведение ГВС
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Водоотведение ХВС
-      </label><br>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Сортировать</button>
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>Номер</th>
-      <th>Название организации</th>
-      <th>Статус</th>
-      <th>Дата окончания</th>
-      <th>Подробнее</th>
-    </tr>
-    </thead>
-    <tr>
-      <td>123</td>
-      <td>123</td>
-      <td>Завершен</td>
-      <td>01.01.2017</td>
-      <td><a href="view_each"><span class="glyphicon glyphicon-cog"></span></a></td>
-    </tr>
-  </table>
+  <% if @cons.length == 0 %>
+    <h3>Архив пуст. Завершенных конрактов нет.</h3>
+  <% else %>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Название</th>
+        <th>Название организации</th>
+        <th>Дата окончания</th>
+        <th>Статус</th>
+        <th>Цена</th>
+        <th>Подробнее</th>
+      </tr>
+      </thead>
+      <% @cons.each do |f| %>
+        <tr>
+          <td><%= f.name %></td>
+          <td><%= Org.where(id: f.org_id).first.small_name %></td>
+          <td><%= f.end_date %></td>
+          <td>Завершен</td>
+          <td><%= f.price %></td>
+          <td>
+            <%= link_to f do %>
+              <span class="glyphicon glyphicon-cog"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>

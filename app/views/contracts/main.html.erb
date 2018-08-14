@@ -5,73 +5,49 @@
   <a href="all" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Архив</a>
 </div>
 <div class="col-md-10">
-  <h3>Сортировать по</h3>
-  <div class="col-md-6">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Только бюджетные организации
-      </label><br>
-      <label>
-        <input type="checkbox"> Только коммерческие организации
-      </label><br>
-      <hr>
-      <label>
-        <input type="checkbox" checked> Отопление
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Эксплуатационные услуги
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Вывоз ТБО
-      </label><br>
-
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Дата окончания по возрастанию
-      </label><br>
-      <label>
-        <input type="checkbox"> Дата окончания по убыванию
-      </label><br>
-      <hr>
-      <label>
-        <input type="checkbox" checked> ГВС
-      </label><br>
-      <label>
-        <input type="checkbox" checked> ХВС
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Водоотведение ГВС
-      </label><br>
-      <label>
-        <input type="checkbox" checked> Водоотведение ХВС
-      </label><br>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Сортировать</button>
-  <h3>Возможно тут нужны ещё какие-то критерии сортировки?</h3>
   <table class="table table-hover">
     <thead>
     <tr>
-      <th>Номер</th>
+      <th>Название</th>
       <th>Название организации</th>
-      <th>Статус</th>
+      <th>Тип организации</th>
       <th>Дата окончания</th>
+      <th>Цена</th>
+      <th>Статус</th>
       <th>Подробнее</th>
-      <th>История платежей</th>
       <th>Добавить оплату</th>
     </tr>
     </thead>
-    <tr>
-      <td>123</td>
-      <td>123</td>
-      <td>Оплачен</td>
-      <td>01.01.2019</td>
-      <td><a href="view_each"><span class="glyphicon glyphicon-cog"></span></a></td>
-      <td><a href="payments"><span class="glyphicon glyphicon-time"></span></a></td>
-      <td><a href="pay"><span class="glyphicon glyphicon-check"></span></a></td>
-    </tr>
+    <% @cons.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= Org.where(id: f.org_id).first.small_name %></td>
+        <td><%= Org.where(id: f.org_id).first.typ %></td>
+        <td><%= f.end_date %></td>
+        <td><%= f.price %></td>
+        <td>
+          <% if Payment.where(contract_id: f.id, month: (Time.now() - Time.now().day.day + 1.day)).first.nil? %>
+            <% s = 0 %>
+          <% else %>
+            <% s = Payment.where(contract_id: f.id, month: (Time.now() - Time.now().day.day + 1.day)).sum(:summ) %>
+          <% end %>
+          <% if s < f.price %>
+            Не оплачено
+          <% else %>
+            Оплачено
+          <% end %>
+        </td>
+        <td>
+          <%= link_to f do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <% end %>
+          <td>
+            <%= link_to payments_new_path(id: f) do %>
+              <span class="glyphicon glyphicon-ruble"></span>
+            <% end %>
+          </td>
+          </td>
+          </tr>
+    <% end %>
   </table>
 </div>

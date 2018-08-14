@@ -9,16 +9,22 @@
     <thead>
     <tr>
       <th>Наименнование</th>
-      <th>Код</th>
-      <th>Полное наименование</th>
+      <th>Тип</th>
+      <th>Полное название</th>
       <th>Подробнее</th>
     </tr>
     </thead>
-    <tr>
-      <td>123</td>
-      <td>123</td>
-      <td>123</td>
-      <td><a href="view_each"><span class="glyphicon glyphicon-cog"></span></a></td>
-    </tr>
+    <% @conts.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.typ %></td>
+        <td><%= f.full_name %></td>
+        <td>
+          <%= link_to f do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 </div>

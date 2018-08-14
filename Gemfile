@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://rubygems.orgs'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
@@ -46,7 +46,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'mysql2'
 end
 
 group :development do

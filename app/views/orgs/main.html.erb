@@ -9,16 +9,22 @@
     <thead>
     <tr>
       <th>Наименнование</th>
-      <th>Код</th>
+      <th>Тип</th>
       <th>Сокращенное название</th>
-      <th>Восстановить</th>
+      <th>Подробнее</th>
     </tr>
     </thead>
-    <tr>
-      <td>123</td>
-      <td>123</td>
-      <td>123</td>
-      <td><a href="view_each"><span class="glyphicon glyphicon-ok"></span></a></td>
-    </tr>
+    <% @orgs.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.typ %></td>
+        <td><%= f.small_name %></td>
+        <td>
+          <%= link_to f do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
   </table>
 </div>

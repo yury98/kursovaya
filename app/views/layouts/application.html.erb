@@ -14,10 +14,31 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="/main/index">Главная<span class="sr-only">(current)</span></a></li>
-            <li><a href="/org/main">Организации</a></li>
-            <li><a href="/contragents/main">Контрагенты</a></li>
-            <li><a href="/contracts/main">Контракты</a></li>
+            <% if current_page?(main_index_path) %>
+              <li class="active"><a href="/main/index">Главная<span class="sr-only">(current)</span></a></li>
+            <% else %>
+              <li><a href="/main/index">Главная<span class="sr-only">(current)</span></a></li>
+            <% end %>
+            <% if current_page?(orgs_main_path) %>
+              <li class="active"><a href="/orgs/main">Организации<span class="sr-only">(current)</span></a></li>
+            <% else %>
+              <li><a href="/orgs/main">Организации</a></li>
+            <% end %>
+            <% if current_page?(contragents_main_path) %>
+              <li class="active"><a href="/contragents/main">Контрагенты</a></li>
+            <% else %>
+              <li><a href="/contragents/main">Контрагенты</a></li>
+            <% end %>
+            <% if current_page?(contracts_main_path) %>
+              <li class="active"><a href="/contracts/main">Контракты</a></li>
+            <% else %>
+              <li><a href="/contracts/main">Контракты</a></li>
+            <% end %>
+            <% if current_page?(payments_view_path) %>
+              <li class="active"><a href="/payments/view">Счет</a></li>
+            <% else %>
+              <li><a href="/payments/view">Счет</a></li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Выйти</a></li>
@@ -29,8 +50,17 @@
     <div class="col-md-10">
       <%= yield %>
     </div>
-  <div class="list-group col-md-2 person-md">
-    <a href="#" class="list-group-item"><span class="badge">14</span>Здесь будут подходящие к концу контракты (или что-то другое, если хотите ;) Например, можно вставить самые посещаемые страницы)</a>
-  </div>
+    <div class="list-group col-md-2 person-md">
+      <% if @conn.length == 0 %>
+        <p>Завершающихся контрактов нет</p>
+      <% else %>
+        <% @conn.each do |f| %>
+          <%= link_to contracts_main_path, class: "list-group-item" do %>
+            <span class="badge"><%= f.end_date %></span>
+            <%= f.name %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </body>
 </html>

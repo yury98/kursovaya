@@ -1,0 +1,61 @@
+<div class="list-group col-md-2 person-md">
+  <a href="main" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  Организации</a>
+  <a href="new" class="list-group-item"><span class="glyphicon glyphicon-plus"></span>  Добавить</a>
+  <a href="view" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span>  Просмотр и редактирование</a>
+  <a href="dump" class="list-group-item"><span class="glyphicon glyphicon-trash"></span>  Удаленные</a>
+</div>
+<div class="col-md-10">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Название</th>
+      <th>Название организации</th>
+      <th>Тип организации</th>
+      <th>Дата окончания</th>
+      <th>Статус</th>
+      <th>Цена</th>
+      <th>Оплата</th>
+      <th>Подробнее</th>
+      <th>Добавить оплату</th>
+    </tr>
+    </thead>
+    <% @con.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= Org.where(id: f.org_id).first.small_name %></td>
+        <td><%= Org.where(id: f.org_id).first.typ %></td>
+        <td><%= f.end_date %></td>
+        <td>
+          <% if f.end_date < Time.now() %>
+            Завершен
+          <% else %>
+            Активен
+          <% end %>
+        </td>
+        <td><%= f.price %></td>
+        <td>
+          <% if Payment.where(contract_id: f.id, month: (Time.now() - Time.now().day.day + 1.day)).first.nil? %>
+            <% s = 0 %>
+          <% else %>
+            <% s = Payment.where(contract_id: f.id, month: (Time.now() - Time.now().day.day + 1.day)).sum(:summ) %>
+          <% end %>
+          <% if s < f.price %>
+            Не оплачено
+          <% else %>
+            Оплачено
+          <% end %>
+        </td>
+        <td>
+          <%= link_to f do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <% end %>
+          <td>
+            <%= link_to payments_new_path(id: f) do %>
+              <span class="glyphicon glyphicon-ruble"></span>
+            <% end %>
+          </td>
+          </td>
+          </tr>
+    <% end %>
+  </table>
+</div>

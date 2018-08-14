@@ -14,11 +14,21 @@
       <th>Удалить</th>
     </tr>
     </thead>
-    <tr>
-      <td>123</td>
-      <td>123111111111111111111111111111111111111111111111111111111</td>
-      <td><a href="view_each"><span class="glyphicon glyphicon-cog"></span></a></td>
-      <td><a href="#"><span class="glyphicon glyphicon-remove"></span></a></td>
-    </tr>
+    <% @conts.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.full_name %></td>
+        <td>
+          <%= link_to f do %>
+            <span class="glyphicon glyphicon-cog"></span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to f, method: :delete, data: { confirm: 'Вы уверены?'} do %>
+            <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 </div>

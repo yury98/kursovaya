@@ -1,0 +1,58 @@
+<div class="list-group col-md-2 person-md">
+  <a href="plan_each" class="list-group-item"><span class="glyphicon glyphicon-home"></span>  План / Факт</a>
+  <a href="new" class="list-group-item"><span class="glyphicon glyphicon-plus"></span>  Добавить</a>
+  <a href="view" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span>  Просмотр и редактирование</a>
+  <a href="services_each" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Расход по услугам</a>
+</div>
+<div class="col-md-10">
+  <div class="form-horizontal">
+    <div class="form-group col-sm-8">
+      <%= label :number, 'Номер', class: 'col-sm-3 control-label'%>
+      <div class="col-sm-9">
+        <%= label :number, @pay.number, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <%= label :date, 'От', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :date, @pay.date, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+    </div>
+    <h3 class="col-sm-offset-2">Контракт</h3>
+    <div class="form-group">
+      <%= label :contract_id, 'Контракт', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :contract_id, Contract.where(id: @pay.contract_id).first.name, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :month, 'За', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-4">
+        <%= label :month, @pay.month, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :bank, 'Банк', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :bank, @pay.bank, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :sum, 'Сумма', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :sum, @pay.summ, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= link_to payments_edit_path(id: @pay), class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-cog"></span>
+          Редактировать
+        <% end %>
+        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> Отправить на почту</a>
+      </div>
+    </div>
+  </div>
+</div>

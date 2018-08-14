@@ -1,0 +1,324 @@
+<%= form_for @con do |f|%>
+  <div class="form-horizontal">
+    <div class="form-group col-sm-8">
+      <%= f.label :name, 'Название', class: 'col-sm-3 control-label'%>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: 'form-control',  placeholder: 'Название', required: true %>
+      </div>
+    </div>
+    <div class="form-group col-sm-4">
+      <%= f.label :code, 'Код', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :code, class: 'form-control',  placeholder: 'Код', required: true %>
+      </div>
+    </div>
+    <h3 class="col-sm-offset-2">Организация</h3>
+    <div class="form-group">
+      <%= f.label :org_id, 'Организация', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.select :org_id, Org.where(status: nil).collect{ |p| [ p.small_name + '; S = ' + p.square.to_s, p.id]}, {}, {class: 'form-control'}%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :contragent_id, 'Контрагент', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.select :contragent_id, Contragent.where(status: nil).collect{ |p| [ p.full_name , p.id]}, {}, {class: 'form-control'}%>
+      </div>
+    </div>
+    <h3 class="col-sm-offset-2">Предмет договра</h3>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10"
+      <div class="checkbox">
+        <% if !@con.gvs.nil? %>
+          <%= f.check_box(:gvs, {onclick: "cb('gvs', this)", checked: "checked"}, true, false ) %>
+        <% else %>
+          <%= f.check_box(:gvs, {onclick: "cb('gvs', this)"}, true, false ) %>
+        <% end %>
+        <%= f.label :gvs, 'ГВС'%><br>
+        <% if !@con.hvs.nil? %>
+          <%= f.check_box(:hvs, {onclick: "cb('hvs', this)", checked: "checked"}, true, false ) %>
+        <% else %>
+          <%= f.check_box(:hvs, {onclick: "cb('hvs', this)"}, true, false ) %>
+        <% end %>
+        <%= f.label :hvs, 'ХВС'%><br>
+        <% if !@con.vgvs.nil? %>
+          <%= f.check_box :vgvs, {onclick: "cb('vgvs', this)", checked: "checked"}, true, false %>
+        <% else %>
+          <%= f.check_box :vgvs, {onclick: "cb('vgvs', this)"}, true, false %>
+        <% end %>
+        <%= f.label :vgvs, 'Водоотведение ГВС'%><br>
+        <% if !@con.vhvs.nil? %>
+          <%= f.check_box :vhvs, {onclick: "cb('vhvs', this)", checked: "checked"}, true, false %>
+        <% else %>
+          <%= f.check_box :vhvs, {onclick: "cb('vhvs', this)"}, true, false %>
+        <% end %>
+        <%= f.label :vhvs, 'Водоотведение ХВС' %><br>
+        <% if !@con.otop.nil? %>
+          <%= f.check_box :otop, {onclick: "cb('otop', this)", checked: "checked"}, true, false %>
+        <% else %>
+          <%= f.check_box :otop, {onclick: "cb('otop', this)"}, true, false %>
+        <% end %>
+        <%= f.label :otop, 'Отопление'%><br>
+        <% if !@con.exp.nil? %>
+          <%= f.check_box :exp, {onclick: "cb('exp', this)", checked: "checked"}, true, false %>
+        <% else %>
+          <%= f.check_box :exp, {onclick: "cb('exp', this)"}, true, false %>
+        <% end %>
+        <%= f.label :exp, 'Эксплуатационные услуги'%><br>
+        <% if !@con.tbo.nil? %>
+          <%= f.check_box :tbo, {onclick: "cb('tbo', this)", checked: "checked"}, true, false %>
+        <% else %>
+          <%= f.check_box :tbo, {onclick: "cb('tbo', this)"}, true, false %>
+        <% end %>
+        <%= f.label :tbo, 'Вывоз ТБО'%><br>
+      </div></div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :v_gvs, 'ГВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.gvs.nil? %>
+        <%= f.text_field :v_gvs, class: 'form-control',  placeholder: 'ГВС', onchange: "price('gvs')" %>
+      <% else %>
+        <%= f.text_field :v_gvs, class: 'form-control',  placeholder: 'ГВС', readonly: true, onchange: "price('gvs')" %>
+      <% end %>
+      <span class="input-group-addon">м<sup>3</sup></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :t_gvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.gvs.nil? %>
+        <%= f.text_field :t_gvs, class: 'form-control',  placeholder: 'Тариф', onchange: "price('gvs')" %>
+      <% else %>
+        <%= f.text_field :t_gvs, class: 'form-control',  placeholder: 'Тариф', readonly: true, onchange: "price('gvs')" %>
+      <% end %>
+      <span class="input-group-addon">руб.</span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :o_gvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= f.text_field :o_gvs, class: 'form-control',  placeholder: 'Итог', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :v_hvs, 'ХВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.hvs.nil? %>
+        <%= f.text_field :v_hvs, class: 'form-control',  placeholder: 'ХВС', onchange: "price('hvs')" %>
+      <% else %>
+        <%= f.text_field :v_hvs, class: 'form-control',  placeholder: 'ХВС', readonly: true, onchange: "price('hvs')" %>
+      <% end %>
+      <span class="input-group-addon">м<sup>3</sup></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :t_hvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.hvs.nil? %>
+        <%= f.text_field :t_hvs, class: 'form-control',  placeholder: 'Тариф', onchange: "price('hvs')" %>
+      <% else %>
+        <%= f.text_field :t_hvs, class: 'form-control',  placeholder: 'Тариф', readonly: true, onchange: "price('hvs')" %>
+      <% end %>
+      <span class="input-group-addon">руб.</span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :o_hvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= f.text_field :o_hvs, class: 'form-control',  placeholder: 'Итог', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :v_vgvs, 'Водоотв. ГВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.vgvs.nil? %>
+        <%= f.text_field :v_vgvs, class: 'form-control',  placeholder: 'ГВС', onchange: "price('vgvs')" %>
+      <% else %>
+        <%= f.text_field :v_vgvs, class: 'form-control',  placeholder: 'ГВС', readonly: true, onchange: "price('vgvs')" %>
+      <% end %>
+      <span class="input-group-addon">м<sup>3</sup></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :t_vgvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.vgvs.nil? %>
+        <%= f.text_field :t_vgvs, class: 'form-control',  placeholder: 'Тариф', onchange: "price('vgvs')" %>
+      <% else %>
+        <%= f.text_field :t_vgvs, class: 'form-control',  placeholder: 'Тариф', readonly: true, onchange: "price('vgvs')" %>
+      <% end %>
+      <span class="input-group-addon">руб.</span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :o_vgvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= f.text_field :o_vgvs, class: 'form-control',  placeholder: 'Итог', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :v_vhvs, 'Водоотв. ХВС', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.vhvs.nil? %>
+        <%= f.text_field :v_vhvs, class: 'form-control',  placeholder: 'ХВС', onchange: "price('vhvs')" %>
+      <% else %>
+        <%= f.text_field :v_vhvs, class: 'form-control',  placeholder: 'ХВС', readonly: true, onchange: "price('vhvs')" %>
+      <% end %>
+
+      <span class="input-group-addon">м<sup>3</sup></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :t_vhvs, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.vhvs.nil? %>
+        <%= f.text_field :t_vhvs, class: 'form-control',  placeholder: 'Тариф', onchange: "price('vhvs')" %>
+      <% else %>
+        <%= f.text_field :t_vhvs, class: 'form-control',  placeholder: 'Тариф', readonly: true, onchange: "price('vhvs')" %>
+      <% end %>
+      <span class="input-group-addon">руб.</span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :o_vhvs, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= f.text_field :o_vhvs, class: 'form-control',  placeholder: 'Итог', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :v_otop, 'Отопление', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.otop.nil? %>
+        <%= f.text_field :v_otop, class: 'form-control',  placeholder: 'Отопление', onchange: "price('otop')" %>
+      <% else %>
+        <%= f.text_field :v_otop, class: 'form-control',  placeholder: 'Отопление', readonly: true, onchange: "price('otop')" %>
+      <% end %>
+      <span class="input-group-addon">м<sup>3</sup></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :t_otop, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.otop.nil? %>
+        <%= f.text_field :t_otop, class: 'form-control',  placeholder: 'Тариф', onchange: "price('otop')" %>
+      <% else %>
+        <%= f.text_field :t_otop, class: 'form-control',  placeholder: 'Тариф', readonly: true, onchange: "price('otop')" %>
+      <% end %>
+      <span class="input-group-addon">руб.</span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :o_otop, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= f.text_field :o_otop, class: 'form-control',  placeholder: 'Итог', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :v_exp, 'Эксплуатацион. услуги', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.exp.nil? %>
+        <%= f.text_field :v_exp, class: 'form-control',  placeholder: 'Услуги', onchange: "price('exp')" %>
+      <% else %>
+        <%= f.text_field :v_exp, class: 'form-control',  placeholder: 'Услуги', readonly: true, onchange: "price('exp')" %>
+      <% end %>
+
+      <span class="input-group-addon">м<sup>3</sup></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :t_exp, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.exp.nil? %>
+        <%= f.text_field :t_exp, class: 'form-control',  placeholder: 'Тариф', onchange: "price('exp')" %>
+      <% else %>
+        <%= f.text_field :t_exp, class: 'form-control',  placeholder: 'Тариф', readonly: true, onchange: "price('exp')" %>
+      <% end %>
+      <span class="input-group-addon">руб.</span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :o_exp, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= f.text_field :o_exp, class: 'form-control',  placeholder: 'Итог', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :v_tbo, 'Вывоз ТБО', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.tbo.nil? %>
+        <%= f.text_field :v_tbo, class: 'form-control',  placeholder: 'ТБО', onchange: "price('tbo')" %>
+      <% else %>
+        <%= f.text_field :v_tbo, class: 'form-control',  placeholder: 'ТБО', readonly: true, onchange: "price('tbo')" %>
+      <% end %>
+      <span class="input-group-addon">м<sup>3</sup></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :t_tbo, 'Тариф', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <% if !@con.tbo.nil? %>
+        <%= f.text_field :t_tbo, class: 'form-control',  placeholder: 'Тариф', onchange: "price('tbo')" %>
+      <% else %>
+        <%= f.text_field :t_tbo, class: 'form-control',  placeholder: 'Тариф', readonly: true, onchange: "price('tbo')" %>
+      <% end %>
+      <span class="input-group-addon">руб.</span>
+    </div>
+  </div>
+  <div class="form-group col-sm-4">
+    <%= f.label :o_tbo, 'Общая сумма', class: 'col-sm-6 control-label'%>
+    <div class="input-group col-sm-6">
+      <%= f.text_field :o_tbo, class: 'form-control',  placeholder: 'Итог', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <div class="form-group">
+  </div>
+  <h3 class="col-sm-offset-2">Цена договра</h3>
+  <div class="form-group">
+    <%= f.label :price, 'Цена договора с НДС', class: 'col-sm-2 control-label'%>
+    <div class="input-group col-sm-10">
+      <%= f.text_field :price, class: 'form-control',  placeholder: 'Будет подсчитано автоматически, как сумма всех общих сумм', readonly: true %>
+      <span class="input-group-addon">руб.</span>
+    </div><br>
+  </div>
+  <h3 class="col-sm-offset-2">Даты</h3>
+  <div class="form-group">
+    <%= f.label :podp_date, 'Дата подписания договора', class: 'col-sm-4 control-label'%>
+    <div class="col-sm-4">
+      <%= f.date_select :podp_date, class: 'form-control',  placeholder: 'Дата подписания', required: true %>
+    </div><br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_date, 'Дата окончания договора', class: 'col-sm-4 control-label'%>
+    <div class="col-sm-4">
+      <%= f.date_select :end_date, class: 'form-control',  placeholder: 'Дата окончания действия договора', required: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Сохранить</button>
+    </div>
+  </div>
+  </div>
+<% end %>
