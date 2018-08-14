@@ -2,94 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41e088f7-fe14-4ccb-a4e1-507c1a277c6a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/cb.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/payments.coffee" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/payments.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/orgs_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/payments_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/orgs_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/payments_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/contract.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/contragent.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/org.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/payment.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/contracts/_con.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/contracts/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/contragents/_contr.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/contragents/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/orgs/_org.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/orgs/contracts.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/orgs/dump.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/orgs/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/orgs/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/_pay.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/plan_all.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/plan_each.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/services_all.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/services_each.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/payments/view.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180810094102_create_organizations.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180812160749_remove_parts_from_kontragents.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180812161654_add_parts_to_kontragents.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180812195443_create_contragents.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180813133131_create_services.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180813134207_create_contracts.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180813135042_add_f_key.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180813162944_add_con.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180814101617_create_paiments.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20180814105038_rename_paiment_to_payment.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/payments_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/contracts.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/contragents.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/organizations.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/payments.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/services.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/contract_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/contragent_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/organization_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/paiment_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/service_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/untitled1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/untitled1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/org.coffee" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/orgs.coffee" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/org.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/orgs.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/contracts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/contracts_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/contragents_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/contragents_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/org_controller.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/org_helper.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/kontragent.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts/all.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contracts/all.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contracts/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts/main.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contracts/main.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts/pay.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts/payments.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contracts/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts/view.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contracts/view.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contracts/view_each.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contragents/dump.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contragents/dump.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contragents/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contragents/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contragents/main.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contragents/main.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contragents/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contragents/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contragents/view_each.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/main/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/org/contracts.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contragents/view.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/org/dump.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/orgs/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/org/edit.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/org/main.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/orgs/main.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/org/new.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/org/view.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/orgs/view.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/org/view_each.html.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20180726080528_kontragents.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20180726080528_kontragents.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -147,8 +61,8 @@
       <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+            <state relative-caret-position="463">
+              <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -527,12 +441,12 @@
       <workItem from="1533663883621" duration="7284000" />
       <workItem from="1533814659839" duration="5914000" />
       <workItem from="1533894004738" duration="22781000" />
-      <workItem from="1533937919039" duration="96296000" />
+      <workItem from="1533937919039" duration="97118000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166441000" />
+    <option name="totallyTimeSpent" value="167263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -923,8 +837,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        <state relative-caret-position="463">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
         </state>
       </provider>
     </entry>
