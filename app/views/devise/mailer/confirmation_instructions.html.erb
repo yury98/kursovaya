@@ -1,0 +1,5 @@
+<p>Добрый день <%= @email %>!</p>
+
+<p>Подтвердите свой аккаут по ссылке внизу</p>
+
+<p><%= link_to 'Ссылка', confirmation_url(@resource, confirmation_token: @token) %></p>

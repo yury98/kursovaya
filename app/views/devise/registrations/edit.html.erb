@@ -1,0 +1,65 @@
+<h2 class="col-sm-offset-2">Изменить учетную запись</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-horizontal">
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :email, 'Email', class: 'col-sm-2 control-label' %><br />
+        <div class="col-sm-10" >
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :fio, 'ФИО', class: 'col-sm-2 control-label' %><br />
+        <div class="col-sm-10" >
+          <%= f.text_field :fio, autofocus: true, autocomplete: "fio", class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+  <div class="field">
+    <%= f.label :password, 'Новый пароль (оставьте пустым, если не хотите ничего менять)', class: 'col-sm-2 control-label' %><br />
+    <div class="col-sm-10" >
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    </div>
+  </div>
+    </div>
+
+    <div class="form-group">
+  <div class="field">
+    <%= f.label :password_confirmation, 'Подтверждение пароля', class: 'col-sm-2 control-label' %><br />
+    <div class="col-sm-10" >
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+    </div>
+  </div>
+    </div>
+
+    <div class="form-group">
+  <div class="field">
+    <%= f.label :current_password, 'Текущай пароль (для применения изменений)', class: 'col-sm-2 control-label' %><br />
+    <div class="col-sm-10" >
+    <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+    </div>
+  </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :mail, 'Получать уведомления о завершении контрактов по почте', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.select :mail, [['Да', true], ['Нет', false]], {}, {class: 'form-control', autocomplete: "mail"}%>
+      </div>
+    </div>
+    <div class="form-group">
+  <div class="actions">
+    <%= f.submit "Обновить", class: "col-sm-offset-2 btn btn-default" %>
+  </div>
+    </div>
+  </div>
+<% end %>

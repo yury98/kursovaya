@@ -1,0 +1,7 @@
+<p>Добрый день <%= @resource.email %>!</p>
+
+<p>Ваш Аккаунт заблокирован</p>
+
+<p>Клинкните на ссылку ниже, чтобы разблокировать</p>
+
+<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>

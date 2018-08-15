@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'payments/new'
   get 'payments/view'
   get 'payments/plan_each'

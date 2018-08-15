@@ -1,0 +1,7 @@
+<p>Добрый день <%= @email %>!</p>
+
+<% if @resource.try(:unconfirmed_email?) %>
+  <p>Ваш email изменяется на: <%= @resource.unconfirmed_email %>.</p>
+<% else %>
+  <p>Ваш email изменен на:  <%= @resource.email %>.</p>
+<% end %>
