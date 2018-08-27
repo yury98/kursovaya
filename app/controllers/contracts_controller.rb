@@ -15,7 +15,7 @@ class ContractsController < ApplicationController
     @con.created_by = current_user.fio
     @con.last_cb = current_user.fio
     @con.price_name = RuPropisju.rublej(@con.price)
-    @con.price_nds = @con.price / (@con.nds * 0.01 + 1)
+    @con.price_nds = @con.price / (@con.nds.to_i * 0.01 + 1)
     if @con.save
       redirect_to @con
     else
@@ -34,7 +34,7 @@ class ContractsController < ApplicationController
   def update
     @con.last_cb = current_user.fio
     @con.price_name = RuPropisju.rublej(@con.price)
-    @con.price_nds = @con.price / (@con.nds * 0.01 + 1)
+    @con.price_nds = @con.price / (@con.nds.to_i * 0.01 + 1)
     if @con.update_attributes(con_params)
       redirect_to @con
     else

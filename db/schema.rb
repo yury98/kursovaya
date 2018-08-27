@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2018_08_26_155517) do
     t.decimal "o_tbo", precision: 10, scale: 2
     t.string "last_cb"
     t.string "created_by"
-    t.integer "nds"
+    t.string "nds"
     t.string "kod_p"
     t.string "innkpp"
     t.string "rsch"

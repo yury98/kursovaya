@@ -1,7 +1,7 @@
 class AddInfoForContracts < ActiveRecord::Migration[5.2]
   def change
     change_table :contracts do |t|
-      t.integer :nds
+      t.string :nds
       t.string :kod_p
       t.string :innkpp
       t.string :rsch
