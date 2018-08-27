@@ -9,81 +9,81 @@
     <div class="form-group col-sm-8">
       <%= label :name, 'Название', class: 'col-sm-3 control-label'%>
       <div class="col-sm-9">
-        <%= label :name, @org.name, class: 'control-label'%>
+        <%= label :name, @org.name,  class: 'form-control'%>
       </div>
     </div>
     <div class="form-group col-sm-4">
       <%= label :code, 'Код', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :code, @org.code, class: 'control-label'%>
+        <%= label :code, @org.code, class: 'form-control'%>
       </div>
     </div>
     <h3 class="col-sm-offset-2">Основное</h3>
     <div class="form-group">
       <%= label :person, 'Юр./Физ. лицо', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :person, @org.person, class: 'control-label'%>
+        <%= label :person, @org.person, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
       <%= label :typ, 'Тип организации', class: 'col-sm-2 control-label'%>
       <div class="col-sm-4">
-        <%= label :typ, @org.typ, class: 'control-label'%>
+        <%= label :typ, @org.typ, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
       <%= label :full_name, 'Полное название', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :full_name, @org.full_name, class: 'control-label'%>
+        <%= label :full_name, @org.full_name, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
       <%= label :small_name, 'Сокращенное название', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :small_name, @org.small_name, class: 'control-label'%>
+        <%= label :small_name, @org.small_name, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
       <%= label :usedge, 'Использовать', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :usedge, @org.usedge, class: 'control-label'%>
+        <%= label :usedge, @org.usedge, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
       <%= label :account, 'Основной банковский счет', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :account, @org.account, class: 'control-label'%>
+        <%= label :account, @org.account, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
       <%= label :u_address, 'Юридический адрес', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :u_address, @org.u_address, class: 'control-label'%>
+        <%= label :u_address, @org.u_address, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
       <%= label :f_address, 'Фактический адрес', class: 'col-sm-2 control-label'%>
       <div class="col-sm-10">
-        <%= label :f_address, @org.f_address, class: 'control-label'%>
+        <%= label :f_address, @org.f_address, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group col-sm-4">
       <%= label :square, 'Площадь', class: 'col-sm-7 control-label'%>
       <div class="input-group col-sm-5">
-        <%= label :square, "#{@org.square}м2", class: 'control-label'%>
+        <%= label :square, "#{@org.square}м2", class: 'form-control'%>
       </div>
     </div>
     <div class="form-group col-sm-4">
       <%= label :people, 'Кол-во сотрудников', class: 'col-sm-6 control-label'%>
       <div class="col-sm-6">
-        <%= label :people, @org.people, class: 'control-label'%>
+        <%= label :people, @org.people, class: 'form-control'%>
         <%=  %>
       </div>
     </div>
     <div class="form-group col-sm-5">
       <%= label :space_fp, 'Кол-во посадочных мест', class: 'col-sm-6 control-label'%>
       <div class="col-sm-6">
-        <%= label :space_fp, @org.space_fp, class: 'control-label'%>
+        <%= label :space_fp, @org.space_fp, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group">
@@ -96,7 +96,6 @@
           <span class="glyphicon glyphicon-trash"></span>
           Удалить
         <% end %>
-        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> Отправить на почту</a>
       </div>
     </div>
   </div>

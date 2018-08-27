@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_15_174437) do
+ActiveRecord::Schema.define(version: 2018_08_26_155517) do
 
   create_table "contracts", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,20 @@ ActiveRecord::Schema.define(version: 2018_08_15_174437) do
     t.decimal "v_tbo", precision: 10, scale: 2
     t.decimal "t_tbo", precision: 10, scale: 2
     t.decimal "o_tbo", precision: 10, scale: 2
+    t.string "last_cb"
+    t.string "created_by"
+    t.integer "nds"
+    t.string "kod_p"
+    t.string "innkpp"
+    t.string "rsch"
+    t.string "bank"
+    t.string "ksch"
+    t.string "bik"
+    t.string "u_address"
+    t.string "tel"
+    t.string "p_address"
+    t.string "price_name"
+    t.decimal "price_nds", precision: 10, scale: 2
   end
 
   create_table "contragents", force: :cascade do |t|
@@ -70,12 +84,28 @@ ActiveRecord::Schema.define(version: 2018_08_15_174437) do
     t.string "code_name", null: false
     t.string "bank_name", null: false
     t.binary "status"
-    t.datetime "last_change"
-    t.string "last_cb"
-    t.datetime "created"
     t.string "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_cb"
+  end
+
+  create_table "info_admins", force: :cascade do |t|
+    t.string "post"
+    t.string "address"
+    t.string "tel"
+    t.string "destination"
+    t.string "trans"
+    t.string "fil"
+    t.string "bik"
+    t.string "ksch"
+    t.string "innkpp"
+    t.string "gruz"
+    t.string "addressg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "dir"
+    t.string "main_buh"
   end
 
   create_table "orgs", force: :cascade do |t|
@@ -89,17 +119,15 @@ ActiveRecord::Schema.define(version: 2018_08_15_174437) do
     t.string "account", null: false
     t.string "u_address", null: false
     t.string "f_address", null: false
-    t.binary "foreign", default: "x'66616c7365'", null: false
+    t.binary "foreign", default: "x'7827373832373337333833323337333333373333333833333332333333373333333333333337333333333333333833333333333333323333333333333337333333333333333333333333333333373333333333333333333333333333333833333333333333333333333333333332333333333333333333333333333333373333333333333333333333333333333333333333333333333333333333333336333333333333333333333333333333333333333333333333333333333333333633333333333333333333333333333333333333333333333333333333333333363333333333333333333333333333333333333333333333333333333333333331333333333333333333333333333333333333333333333333333333333333333633333333333333333333333333333336333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333337333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333363333333333333333333333333333333333333333333333333333333333333335333333333333333333333333333333323333333333333333333333333333333733333333333333323333333333333337333333323333333733323337323727'", null: false
     t.integer "square"
     t.integer "people"
     t.integer "space_fp"
     t.binary "status"
-    t.datetime "last_change"
-    t.string "last_cb"
-    t.datetime "created"
     t.string "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_cb"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -111,6 +139,9 @@ ActiveRecord::Schema.define(version: 2018_08_15_174437) do
     t.decimal "summ", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_cb"
+    t.string "created_by"
+    t.string "file_name"
   end
 
   create_table "users", force: :cascade do |t|

@@ -42,6 +42,20 @@
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <% if current_user.admin == true %>
+              <% if current_page?(admin_info_path) %>
+                <li class="active"><%= link_to 'Информация об организации', admin_info_path %></li>
+              <% else %>
+                <li><%= link_to 'Информация об организации', admin_info_path %></li>
+              <% end %>
+            <% end %>
+            <% if current_user.admin == true %>
+              <% if current_page?(admin_stats_path) %>
+                <li class="active"><%= link_to 'Административная панель', admin_stats_path %></li>
+              <% else %>
+                <li><%= link_to 'Админимстративная панель', admin_stats_path %></li>
+              <% end %>
+            <% end %>
             <% if current_page?(edit_user_registration_path) %>
               <li class="active"><%= link_to 'Личный кабинет', edit_user_registration_path %></li>
             <% else %>
@@ -72,6 +86,7 @@
           <% if @conn.length == 0 %>
             <p class="list-group-item">Завершающихся контрактов нет</p>
           <% else %>
+            <p class="list-group-item">Завершающиеся контракты:</p>
             <% @conn.each do |f| %>
               <%= link_to contracts_main_path, class: "list-group-item" do %>
                 <span class="badge"><%= f.end_date %></span>

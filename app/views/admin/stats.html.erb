@@ -1,0 +1,110 @@
+<% if current_user.admin == true %>
+  <div class="col-md-10">
+    <% @us.each do |f| %>
+      <h3> Пользователь: <%= f.fio %>; Email: <%= f.email %> </h3>
+      <h5> Организации </h5>
+    <table class="table table-hover">
+      <% orgs = Org.where(created_by: f.fio).or(Org.where(last_cb: f.fio)) %>
+      <thead>
+      <tr>
+        <th>Название</th>
+        <th>Полное название</th>
+        <th>Создано</th>
+        <th>Последнее обновление</th>
+        <th>Подробнее</th>
+      </tr>
+      </thead>
+      <% orgs.each do |f| %>
+        <tr>
+          <td><%= f.name %></td>
+          <td><%= f.full_name %></td>
+          <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
+          <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+          <td>
+            <%= link_to f do %>
+              <span class="glyphicon glyphicon-cog"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+      <h5> Контрагенты </h5>
+      <table class="table table-hover">
+        <% contr = Contragent.where(created_by: f.fio).or(Contragent.where(last_cb: f.fio)) %>
+        <thead>
+        <tr>
+          <th>Название</th>
+          <th>Полное название</th>
+          <th>Создано</th>
+          <th>Последнее обновление</th>
+          <th>Подробнее</th>
+        </tr>
+        </thead>
+        <% contr.each do |f| %>
+          <tr>
+            <td><%= f.name %></td>
+            <td><%= f.full_name %></td>
+            <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
+            <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+            <td>
+              <%= link_to f do %>
+                <span class="glyphicon glyphicon-cog"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <h5> Контракты </h5>
+      <table class="table table-hover">
+        <% con = Contract.where(created_by: f.fio).or(Contract.where(last_cb: f.fio)) %>
+        <thead>
+        <tr>
+          <th>Название</th>
+          <th>Код</th>
+          <th>Создано</th>
+          <th>Последнее обновление</th>
+          <th>Подробнее</th>
+        </tr>
+        </thead>
+        <% con.each do |f| %>
+          <tr>
+            <td><%= f.name %></td>
+            <td><%= f.code %></td>
+            <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
+            <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+            <td>
+              <%= link_to f do %>
+                <span class="glyphicon glyphicon-cog"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <table class="table table-hover">
+        <% pay = Payment.where(created_by: f.fio).or(Payment.where(last_cb: f.fio)) %>
+        <thead>
+        <tr>
+          <th>Контракт</th>
+          <th>Номер</th>
+          <th>Создано</th>
+          <th>Последнее обновление</th>
+          <th>Подробнее</th>
+        </tr>
+        </thead>
+        <% pay.each do |f| %>
+          <tr>
+            <td><%= Contract.where(id: f.contract_id).first.name %></td>
+            <td><%= f.number %></td>
+            <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
+            <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+            <td>
+              <%= link_to f do %>
+                <span class="glyphicon glyphicon-cog"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+<% end %>

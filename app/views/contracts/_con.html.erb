@@ -25,9 +25,18 @@
         <%= f.select :contragent_id, Contragent.where(status: nil).collect{ |p| [ p.full_name , p.id]}, {}, {class: 'form-control'}%>
       </div>
     </div>
+    <div class="form-group">
+      <%= f.label :nds, 'НДС', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <div class="input-group col-sm-2">
+          <%= f.text_field :nds, class: 'form-control',  placeholder: 'НДС', required: true %>
+          <span class="input-group-addon">%</span>
+        </div>
+      </div>
+    </div>
     <h3 class="col-sm-offset-2">Предмет договра</h3>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10"
+      <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
         <% if !@con.gvs.nil? %>
           <%= f.check_box(:gvs, {onclick: "cb('gvs', this)", checked: "checked"}, true, false ) %>
@@ -300,6 +309,61 @@
       <span class="input-group-addon">руб.</span>
     </div><br>
   </div>
+    <h3 class="col-sm-offset-2">Информация для счета</h3>
+    <div class="form-group">
+      <%= f.label :kod_p, 'Код плательщика', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :kod_p, class: 'form-control',  placeholder: 'Код плательщика', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :innkpp, 'ИНН/КПП', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :innkpp, class: 'form-control',  placeholder: 'ИНН/КПП', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :rsch, 'Рассчетный счет', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :rsch, class: 'form-control',  placeholder: 'Рассчетный счет', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :bank, 'Банк', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :bank, class: 'form-control',  placeholder: 'Банк', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :ksch, 'Кор. счет', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :ksch, class: 'form-control',  placeholder: 'Кор. счет', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :bik, 'БИК', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :bik, class: 'form-control',  placeholder: 'БИК', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :u_address, 'Юридический адрес', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :u_address, class: 'form-control',  placeholder: 'Юридический адрес', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :tel, 'Телефон', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :tel, class: 'form-control',  placeholder: 'Телефон', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :p_address, 'Адрес помещения', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= f.text_field :p_address, class: 'form-control',  placeholder: 'Адрес помещения', required: true %>
+      </div>
+    </div>
   <h3 class="col-sm-offset-2">Даты</h3>
   <div class="form-group">
     <%= f.label :podp_date, 'Дата подписания договора', class: 'col-sm-4 control-label'%>

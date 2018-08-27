@@ -11,6 +11,10 @@
       <th>Наименнование</th>
       <th>Тип</th>
       <th>Сокращенное название</th>
+      <% if current_user.admin == true %>
+        <th>Создано</th>
+        <th>Последнее обновление</th>
+      <% end %>
       <th>Подробнее</th>
     </tr>
     </thead>
@@ -19,6 +23,10 @@
         <td><%= f.name %></td>
         <td><%= f.typ %></td>
         <td><%= f.small_name %></td>
+        <% if current_user.admin == true %>
+          <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
+          <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+        <% end %>
         <td>
           <%= link_to f do %>
             <span class="glyphicon glyphicon-cog"></span>

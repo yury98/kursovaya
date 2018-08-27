@@ -31,6 +31,8 @@ class ContragentsController < ApplicationController
 
   def create
     @cont = Contragent.new(cont_params)
+    @cont.created_by = current_user.fio
+    @cont.last_cb = current_user.fio
     if @cont.save
       redirect_to @cont
     else
@@ -41,6 +43,7 @@ class ContragentsController < ApplicationController
   def show;end
 
   def update
+    @cont.last_cb = current_user.fio
     if @cont.update_attributes(cont_params)
       redirect_to @cont
     else

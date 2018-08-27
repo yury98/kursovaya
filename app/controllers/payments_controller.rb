@@ -34,8 +34,15 @@ class PaymentsController < ApplicationController
 
   def plan_each; end
 
+  def download
+    send_file("#{Rails.root}/public/#{params[:number]}.docx")
+  end
+
   def create
     @pay = Payment.new(pay_params)
+    @pay.created_by = current_user.fio
+    @pay.last_cb = current_user.fio
+    @pay.file_name = @pay.number
     if @pay.save
       redirect_to @pay
     else
@@ -52,12 +59,19 @@ class PaymentsController < ApplicationController
   def edit; end
 
   def update
+    @pay.last_cb = current_user.fio
+    @pay.file_name = @pay.number
     if @pay.update_attributes(pay_params)
       redirect_to @pay
     else
       render :edit
     end
   end
+
+  def file
+
+  end
+
   private
 
   def set_pay
@@ -65,7 +79,7 @@ class PaymentsController < ApplicationController
   end
 
   def pay_params
-    params.require(:payment).permit(:number, :date, :month, :contract_id, :bank, :summ)
+    params.require(:payment).permit(:number, :date, :month, :contract_id)
   end
 
 end

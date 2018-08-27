@@ -31,6 +31,8 @@ class OrgsController < ApplicationController
 
   def create
     @org = Org.new(org_params)
+    @org.created_by = current_user.fio
+    @org.last_cb = current_user.fio
     if @org.save
       redirect_to @org
     else
@@ -43,6 +45,7 @@ class OrgsController < ApplicationController
   def edit; end
 
   def update
+    @org.last_cb = current_user.fio
     if @org.update_attributes(org_params)
       redirect_to @org
     else

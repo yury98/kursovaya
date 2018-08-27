@@ -1,0 +1,2 @@
+class InfoAdmin < ApplicationRecord
+end

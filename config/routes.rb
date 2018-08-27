@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'admin/stats'
+  get 'admin/info'
+  post 'admin/new'
   devise_for :users
   get 'payments/new'
+  get 'payments/file'
   get 'payments/view'
   get 'payments/plan_each'
   post 'payments/plan_all'
@@ -8,6 +12,7 @@ Rails.application.routes.draw do
   post 'payments/services_all'
   get 'payments/edit'
   get 'payments/show'
+  get 'payments/download'
   resources :payments
   get 'contracts/main'
   get 'contracts/new'

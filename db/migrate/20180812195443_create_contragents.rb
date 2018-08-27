@@ -1,6 +1,6 @@
 class CreateContragents < ActiveRecord::Migration[5.2]
   def change
-    drop_table :kontragents
+    #drop_table :kontragents
 
     create_table :contragents do |t|
       t.string :name, null: false

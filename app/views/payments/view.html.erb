@@ -12,7 +12,12 @@
     <th>Контракт</th>
     <th>За</th>
     <th>Сумма</th>
+    <% if current_user.admin == true %>
+      <th>Создано</th>
+      <th>Последнее обновление</th>
+    <% end %>
     <th>Подробнее</th>
+    <th>Загрузить</th>
   </tr>
   </thead>
   <% @pays.each do |f| %>
@@ -21,9 +26,18 @@
       <td><%= Contract.where(id: f.contract_id).first.name %></td>
       <td><%=' Месяц: ' + f.month.month.to_s + '; Год: ' + f.month.year.to_s %></td>
       <td><%= f.summ %></td>
+      <% if current_user.admin == true %>
+        <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
+        <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+      <% end %>
       <td>
         <%= link_to f do %>
           <span class="glyphicon glyphicon-cog"></span>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to payments_download_path(number: f.file_name) do %>
+          <span class="glyphicon glyphicon-download-alt"></span>
         <% end %>
       </td>
     </tr>
