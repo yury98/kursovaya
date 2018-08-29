@@ -5,34 +5,36 @@
   <a href="dump" class="list-group-item"><span class="glyphicon glyphicon-trash"></span>  Удаленные</a>
 </div>
 <div class="col-md-10">
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>Наименнование</th>
-      <th>Тип</th>
-      <th>Полное название</th>
-      <% if current_user.admin == true %>
-        <th>Создано</th>
-        <th>Последнее обновление</th>
-      <% end %>
-      <th>Подробнее</th>
-    </tr>
-    </thead>
-    <% @conts.each do |f| %>
+  <% if @conts.length != 0 %>
+    <table class="table table-hover">
+      <thead>
       <tr>
-        <td><%= f.name %></td>
-        <td><%= f.typ %></td>
-        <td><%= f.full_name %></td>
+        <th>Наименнование</th>
+        <th>Тип</th>
+        <th>Полное название</th>
         <% if current_user.admin == true %>
-          <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
-          <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+          <th>Создано</th>
+          <th>Последнее обновление</th>
         <% end %>
-        <td>
-          <%= link_to f do %>
-            <span class="glyphicon glyphicon-cog"></span>
-          <% end %>
-        </td>
+        <th>Подробнее</th>
       </tr>
-    <% end %>
-  </table>
+      </thead>
+      <% @conts.each do |f| %>
+        <tr>
+          <td><%= f.name %></td>
+          <td><%= f.typ %></td>
+          <td><%= f.full_name %></td>
+          <% if current_user.admin == true %>
+            <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
+            <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
+          <% end %>
+          <td>
+            <%= link_to f do %>
+              <span class="glyphicon glyphicon-cog"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>
