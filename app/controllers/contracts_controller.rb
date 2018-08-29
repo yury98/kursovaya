@@ -14,8 +14,8 @@ class ContractsController < ApplicationController
     @con = Contract.new(con_params)
     @con.created_by = current_user.fio
     @con.last_cb = current_user.fio
-    @con.price_name = RuPropisju.rublej(@con.price)
-    @con.price_nds = @con.price / (@con.nds.to_i * 0.01 + 1)
+    @con.price_nds = @con.price * (@con.nds.to_i * 0.01)
+    @con.price_name = RuPropisju.rublej(@con.price + @con.price_nds)
     if @con.save
       redirect_to @con
     else
@@ -33,9 +33,17 @@ class ContractsController < ApplicationController
 
   def update
     @con.last_cb = current_user.fio
-    @con.price_name = RuPropisju.rublej(@con.price)
-    @con.price_nds = @con.price / (@con.nds.to_i * 0.01 + 1)
     if @con.update_attributes(con_params)
+      @con.price_nds = @con.price * (@con.nds.to_i * 0.01)
+      @con.price_name = RuPropisju.rublej(@con.price + @con.price_nds)
+      @con.gvs = nil if @con.v_gvs.nil?
+      @con.hvs = nil if @con.v_hvs.nil?
+      @con.vgvs = nil if @con.v_vgvs.nil?
+      @con.vhvs = nil if @con.v_vhvs.nil?
+      @con.otop = nil if @con.v_otop.nil?
+      @con.exp = nil if @con.v_exp.nil?
+      @con.tbo = nil if @con.v_tbo.nil?
+      @con.save
       redirect_to @con
     else
       render :edit

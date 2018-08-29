@@ -177,6 +177,61 @@
       <%= label :price, @con.price, {}, {class: 'form-control'} %>
     </div><br>
   </div>
+    <h3 class="col-sm-offset-2">Информация для счета</h3>
+    <div class="form-group">
+      <%= label :kod_p, 'Код плательщика', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :kod_p, @con.kod_p, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :innkpp, 'ИНН/КПП', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :innkpp, @con.innkpp, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :rsch, 'Рассчетный счет', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :rsch, @con.rsch, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :bank, 'Банк', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :bank, @con.bank, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :ksch, 'Кор. счет', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :ksch, @con.ksch, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :bik, 'БИК', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :bik, @con.bik, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :u_address, 'Юридический адрес', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :u_address, @con.u_address, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :tel, 'Телефон', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :tel, @con.tel, {}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label :p_address, 'Адрес помещения', class: 'col-sm-2 control-label'%>
+      <div class="col-sm-10">
+        <%= label :p_address, @con.p_address, {}, {class: 'form-control'} %>
+      </div>
+    </div>
   <h3 class="col-sm-offset-2">Даты</h3>
   <div class="form-group">
     <%= label :podp_date, 'Дата подписания договора', class: 'col-sm-4 control-label'%>

@@ -11,7 +11,7 @@ class CreateOrganizations < ActiveRecord::Migration[5.2]
       t.string :account, null: false
       t.string :u_address, null: false
       t.string :f_address, null: false
-      t.binary :foreign, null: false, default: false
+      t.binary :foreign
       t.integer :square
       t.integer :people
       t.integer :space_fp

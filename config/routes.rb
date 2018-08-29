@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'admin/new'
   devise_for :users
   get 'payments/new'
-  get 'payments/file'
+  get 'payments/paid'
   get 'payments/view'
   get 'payments/plan_each'
   post 'payments/plan_all'

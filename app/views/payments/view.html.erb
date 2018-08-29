@@ -16,6 +16,7 @@
       <th>Создано</th>
       <th>Последнее обновление</th>
     <% end %>
+    <th>Оплачено</th>
     <th>Подробнее</th>
     <th>Загрузить</th>
   </tr>
@@ -25,11 +26,20 @@
       <td><%= f.number %></td>
       <td><%= Contract.where(id: f.contract_id).first.name %></td>
       <td><%=' Месяц: ' + f.month.month.to_s + '; Год: ' + f.month.year.to_s %></td>
-      <td><%= f.summ %></td>
+      <td><%= Contract.find(f.contract_id).price %></td>
       <% if current_user.admin == true %>
         <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
         <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>
       <% end %>
+      <td>
+        <% if !f.paid? %>
+        <%= link_to payments_paid_path(id: f.id) do %>
+          <span class="glyphicon glyphicon-remove"></span>
+        <% end %>
+        <% else %>
+          <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
+      </td>
       <td>
         <%= link_to f do %>
           <span class="glyphicon glyphicon-cog"></span>
