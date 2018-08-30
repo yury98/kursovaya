@@ -131,9 +131,10 @@ class PaymentsController < ApplicationController
   def update
     @pay.last_cb = current_user.fio
     @pay.file_name = @pay.number
-    @pay.summ = 0 if @pay.paid != true
-    @pay.summ = Contract.find(@pay.contract_id).price + Contract.find(@pay.contract_id).price_nds + @pay.perep if @pay.paid == true
     if @pay.update_attributes(pay_paramss)
+      @pay.summ = 0 if @pay.paid != true
+      @pay.summ = Contract.find(@pay.contract_id).price + Contract.find(@pay.contract_id).price_nds + @pay.perep if @pay.paid == true
+      @pay.save
       redirect_to @pay
     else
       render :edit
