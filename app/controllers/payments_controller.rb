@@ -28,7 +28,7 @@ class PaymentsController < ApplicationController
                        params[:month]["month(3i)"].to_i)
     @con = Contract.where(end_date: @date.to_s..'2100-09-13', podp_date: '2000-09-13'..(@date + 1.month).to_s)
     @pays = Payment.where(month: @date)
-    @con.each { |n| @p += n.price }
+    @con.each { |n| @p += n.price + n.price_nds }
     @pays.each { |n| @f += n.summ }
   end
 
@@ -102,7 +102,7 @@ class PaymentsController < ApplicationController
 
   def paid
     @pay.paid = true
-    @pay.summ = Contract.find(@pay.contract_id).price
+    @pay.summ = Contract.find(@pay.contract_id).price + Contract.find(@pay.contract_id).price_nds + @pay.perep
     @pay.save
     redirect_to payments_view_path
   end
@@ -112,6 +112,7 @@ class PaymentsController < ApplicationController
     @pay.created_by = current_user.fio
     @pay.last_cb = current_user.fio
     @pay.file_name = @pay.number
+    @pay.summ = 0
     if @pay.save
       redirect_to @pay
     else
@@ -130,7 +131,9 @@ class PaymentsController < ApplicationController
   def update
     @pay.last_cb = current_user.fio
     @pay.file_name = @pay.number
-    if @pay.update_attributes(pay_params)
+    @pay.summ = 0 if @pay.paid != true
+    @pay.summ = Contract.find(@pay.contract_id).price + Contract.find(@pay.contract_id).price_nds + @pay.perep if @pay.paid == true
+    if @pay.update_attributes(pay_paramss)
       redirect_to @pay
     else
       render :edit
@@ -143,8 +146,12 @@ class PaymentsController < ApplicationController
     @pay = Payment.find(params[:id])
   end
 
+  def pay_paramss
+    params.require(:payment).permit(:number, :date, :month, :nazn, :perep)
+  end
+
   def pay_params
-    params.require(:payment).permit(:number, :date, :month, :contract_id, :nazn)
+    params.require(:payment).permit(:number, :date, :month, :contract_id, :nazn, :perep)
   end
 
   def file(mas_info, mas_none, name, length, con, info, pay)

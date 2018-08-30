@@ -5,7 +5,7 @@
   <a href="services_each" class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span>  Расход по услугам</a>
 </div>
 <div class="col-md-10">
-  <h3>Анализ по всем контрактам</h3>
+  <h3>Анализ по всем контрактам (в () сумма с НДС)</h3>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -21,25 +21,45 @@
       </tr>
     </thead>
     <tr>
-      <td><%= @con.sum(:price) %></td>
+      <td><%= @con.sum(:price).to_s + ' + ' + @con.sum(:price_nds).to_s + '(НДС) = ' + (@con.sum(:price) + @con.sum(:price_nds)).to_s %></td>
       <td><%= @pays.sum(:summ) %></td>
-      <td><%= @con.sum(:o_gvs) %></td>
-      <td><%= @con.sum(:o_hvs) %></td>
-      <td><%= @con.sum(:o_vgvs) %></td>
-      <td><%= @con.sum(:o_vhvs) %></td>
-      <td><%= @con.sum(:o_otop) %></td>
-      <td><%= @con.sum(:o_exp) %></td>
-      <td><%= @con.sum(:o_tbo) %></td>
+      <td>
+        <%= @con.sum(:o_gvs) %>
+        <%= '(' + (@con.sum(:o_gvs) * 1.18).round(2).to_s + ')' %>
+      </td>
+      <td>
+        <%= @con.sum(:o_hvs) %>
+        <%= '(' + (@con.sum(:o_hvs) * 1.18).round(2).to_s + ')' %>
+      </td>
+      <td>
+        <%= @con.sum(:o_vgvs) %>
+        <%= '(' + (@con.sum(:o_vgvs) * 1.18).round(2).to_s + ')' %>
+      </td>
+      <td>
+        <%= @con.sum(:o_vhvs) %>
+        <%= '(' + (@con.sum(:o_vhvs) * 1.18).round(2).to_s + ')' %>
+      </td>
+      <td>
+        <%= @con.sum(:o_otop) %>
+        <%= '(' + (@con.sum(:o_otop) * 1.18).round(2).to_s + ')' %>
+      </td>
+      <td>
+        <%= @con.sum(:o_exp) %>
+        <%= '(' + (@con.sum(:o_exp) * 1.18).round(2).to_s + ')' %>
+      </td>
+      <td>
+        <%= @con.sum(:o_tbo) %>
+        <%= '(' + (@con.sum(:o_tbo) * 1.18).round(2).to_s + ')' %>
+      </td>
     </tr>
   </table>
-  <h3>Анализ по каждому контракту</h3>
+  <h3>Анализ по каждому контракту (в () сумма с НДС)</h3>
   <table class="table table-hover">
     <thead>
     <tr>
       <th>Контракт</th>
       <th>Сумма по контракту (руб.)</th>
       <th>Сумма по факту (руб.)</th>
-      <th>Число платежей</th>
       <th>ГВС</th>
       <th>ХВС</th>
       <th>Вод. ГВС</th>
@@ -53,7 +73,7 @@
     <% @con.each do |f| %>
       <tr>
         <td><%= f.name %></td>
-        <td><%= f.price %></td>
+        <td><%= f.price.to_s + ' + ' + f.price_nds.to_s + '(НДС) = ' + (f.price + f.price_nds).to_s %></td>
         <td>
           <% if Payment.where(contract_id: f.id, month: @date).first.nil? %>
             0
@@ -61,14 +81,34 @@
             <%= Payment.where(contract_id: f.id, month: @date).sum(:summ) %>
           <% end %>
         </td>
-        <td><%= Payment.where(contract_id: f.id, month: @date).count %></td>
-        <td><%= f.o_gvs %></td>
-        <td><%= f.o_hvs %></td>
-        <td><%= f.o_vgvs %></td>
-        <td><%= f.o_vhvs %></td>
-        <td><%= f.o_otop %></td>
-        <td><%= f.o_exp %></td>
-        <td><%= f.o_tbo %></td>
+        <td>
+          <%= f.o_gvs %>
+          <%= '(' + (f.o_gvs.to_f * (f.nds.to_f * 0.01 + 1)).to_f.round(2).to_s + ')' if !f.o_gvs.nil?%>
+        </td>
+        <td>
+          <%= f.o_hvs %>
+          <%= '(' + (f.o_hvs.to_f * (f.nds.to_f * 0.01 + 1)).to_f.round(2).to_s + ')' if !f.o_hvs.nil?%>
+        </td>
+        <td>
+          <%= f.o_vgvs %>
+          <%= '(' + (f.o_vgvs.to_f * (f.nds.to_f * 0.01 + 1)).to_f.round(2).to_s + ')' if !f.o_vgvs.nil?%>
+        </td>
+        <td>
+          <%= f.o_vhvs %>
+          <%= '(' + (f.o_vhvs.to_f * (f.nds.to_f * 0.01 + 1)).to_f.round(2).to_s + ')' if !f.o_vhvs.nil?%>
+        </td>
+        <td>
+          <%= f.o_otop %>
+          <%= '(' + (f.o_otop.to_f * (f.nds.to_f * 0.01 + 1)).to_f.round(2).to_s + ')' if !f.o_otop.nil?%>
+        </td>
+        <td>
+          <%= f.o_exp %>
+          <%= '(' + (f.o_exp.to_f * (f.nds.to_f * 0.01 + 1)).to_f.round(2).to_s + ')' if !f.o_exp.nil?%>
+        </td>
+        <td>
+          <%= f.o_tbo %>
+          <%= '(' + (f.o_tbo.to_f * (f.nds.to_f * 0.01 + 1)).to_f.round(2).to_s + ')' if !f.o_tbo.nil?%>
+        </td>
         <td>
           <%= link_to f do %>
             <span class="glyphicon glyphicon-cog"></span>

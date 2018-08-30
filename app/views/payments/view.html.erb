@@ -26,7 +26,7 @@
       <td><%= f.number %></td>
       <td><%= Contract.where(id: f.contract_id).first.name %></td>
       <td><%=' Месяц: ' + f.month.month.to_s + '; Год: ' + f.month.year.to_s %></td>
-      <td><%= Contract.find(f.contract_id).price %></td>
+      <td><%= Contract.find(f.contract_id).price.to_s + ' + ' + Contract.find(f.contract_id).price_nds.to_s + '(НДС) = ' + (Contract.find(f.contract_id).price + Contract.find(f.contract_id).price_nds).to_s  %></td>
       <% if current_user.admin == true %>
         <td><%= f.created_by + '; ' + f.created_at.to_s %></td>
         <td><%= f.last_cb + '; ' + f.updated_at.to_s %></td>

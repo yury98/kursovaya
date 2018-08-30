@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_171950) do
+ActiveRecord::Schema.define(version: 2018_08_29_212955) do
 
   create_table "contracts", force: :cascade do |t|
     t.string "name", null: false
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 2018_08_27_171950) do
     t.string "nazn"
     t.decimal "summ", precision: 10, scale: 6
     t.boolean "paid"
+    t.decimal "perep", precision: 10, scale: 2, default: "0.0"
   end
 
   create_table "users", force: :cascade do |t|

@@ -33,8 +33,9 @@
     </thead>
     <% @con.each do |f| %>
       <tr>
+        <% s = f.price.to_s + ' + ' + f.price_nds.to_s + '(НДС) = ' + (f.price + f. price_nds).to_f.to_s %>
         <td><%= f.name %></td>
-        <td><%= f.price %></td>
+        <td><%= s %></td>
         <td>
           <% if Payment.where(contract_id: f.id, month: @date).first.nil? %>
             0
