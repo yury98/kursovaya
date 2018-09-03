@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/db/migrate/20180812161654_add_parts_to_kontragents.rb" line="3" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41e088f7-fe14-4ccb-a4e1-507c1a277c6a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="41e088f7-fe14-4ccb-a4e1-507c1a277c6a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -336,12 +334,12 @@
       <workItem from="1535392543493" duration="35861000" />
       <workItem from="1535828422305" duration="311000" />
       <workItem from="1535973051622" duration="41000" />
-      <workItem from="1535985285358" duration="660000" />
+      <workItem from="1535985285358" duration="1546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264918000" />
+    <option name="totallyTimeSpent" value="265804000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
