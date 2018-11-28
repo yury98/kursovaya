@@ -5,6 +5,7 @@ class OrgsController < ApplicationController
 
   def main; end
 
+  # Для отображения контрактов по организации
   def contracts
     @con = Contract.where(org_id: params[:id]).order(:end_date)
   end
@@ -15,15 +16,18 @@ class OrgsController < ApplicationController
 
   def view; end
 
+  # Для отображения корзины
   def dump
     @orgs = Org.where(status: true)
   end
 
+  # Для восстановления из корзины
   def del
     @org.update_attribute(:status, nil)
     redirect_to orgs_dump_path
   end
 
+  # Для удаления организации из списка
   def destroy
     @org.update_attribute(:status, true)
     redirect_to orgs_view_path
@@ -55,14 +59,17 @@ class OrgsController < ApplicationController
 
   private
 
+  # Поиск организации
   def set_org
     @org = Org.find(params[:id])
   end
 
+  # Показ неудаленных организаций
   def set_orgs
     @orgs = Org.where(status: nil)
   end
 
+  # Получение параметров организации
   def org_params
     params.require(:org).permit(:name, :code, :person, :typ, :full_name, :small_name, :usedge, :account, :u_address, :f_address, :foreign, :square, :people, :space_fp)
   end

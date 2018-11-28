@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
 
   before_action :set_pay, only: [ :show, :edit, :update, :paid]
+
   def new
     @con = Contract.find(params[:id]) if !params[:id].nil?
     @pay = Payment.new
@@ -8,6 +9,7 @@ class PaymentsController < ApplicationController
 
   def services_each; end
 
+  # Для отображения статистики по услугам за указанный месяц
   def services_all
     @f = 0
     @p = 0
@@ -20,6 +22,7 @@ class PaymentsController < ApplicationController
     @pays.each { |n| @f += n.summ }
   end
 
+  # Для отображения статистики по контрактам за указанный месяц
   def plan_all
     @f = 0
     @p = 0
@@ -34,12 +37,16 @@ class PaymentsController < ApplicationController
 
   def plan_each; end
 
+  # Для формирования печатной версии счета
   def download
     name = params[:number]
+    # Удаление сущестующей печатной версии отчета с таким же именем, если он существует
     File.delete("#{Rails.root}/public/#{name}.docx") if File.file?("#{Rails.root}/public/#{name}.docx")
     pay = Payment.where(file_name: name).first
     con = Contract.where(id: pay.contract_id).first
     mas = []
+    # Проверка по каждой услуге и занесение в массив
+
     if con.gvs == 'true'
       mass = []
       mass << 'gvs'
@@ -96,10 +103,13 @@ class PaymentsController < ApplicationController
       mass << con.o_tbo
       mas << mass
     end
+    # Сборка файла
     make_file(name, pay, mas)
+    # Отправка файла
     send_file("#{Rails.root}/public/#{name}.docx")
   end
 
+  # Простановка счета оплаченным
   def paid
     @pay.paid = true
     @pay.summ = Contract.find(@pay.contract_id).price + Contract.find(@pay.contract_id).price_nds + @pay.perep
@@ -155,6 +165,7 @@ class PaymentsController < ApplicationController
     params.require(:payment).permit(:number, :date, :month, :contract_id, :nazn, :perep)
   end
 
+  # Для сборки файла на основе данных из make_file
   def file(mas_info, mas_none, name, length, con, info, pay)
     # Добавляем верхнюю часть счета
     mas_none += [0, 4, 12, 14, 16, 23, 25, 26, 28, 29, 30, 32, 36, 44, 46, 48, 49, 50, 52, 53, 54, 57, 62, 64, 65, 66, 68,\
@@ -186,6 +197,7 @@ class PaymentsController < ApplicationController
     zip.close
   end
 
+  # Сбор данных для создания файла-счета для определнных количеств услуг
   def make_file(name, pay, mas)
     con = Contract.where(id: pay.contract_id).first
     # Хэш с названиями услуг

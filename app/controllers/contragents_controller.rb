@@ -11,23 +11,23 @@ class ContragentsController < ApplicationController
 
   def view; end
 
+  # Для отображения корзины
   def dump
     @conts = Contragent.where(status: true)
   end
 
+  # Возврат из корзины
   def del
     @cont.update_attribute(:status, nil)
     redirect_to contragents_dump_path
   end
 
+  # Добавление в корзину
   def destroy
     @cont.update_attribute(:status, true)
     redirect_to contragents_view_path
   end
 
-  def new
-    @cont = Contragent.new
-  end
 
   def create
     @cont = Contragent.new(cont_params)
@@ -55,14 +55,17 @@ class ContragentsController < ApplicationController
 
   private
 
+  # Поиск контрагента
   def set_cont
     @cont = Contragent.find(params[:id])
   end
 
+  # Поиск неудаленных контрагентов
   def set_conts
     @conts = Contragent.where(status: nil)
   end
 
+  # Получение параметров контрагента
   def cont_params
     params.require(:contragent).permit(:name, :code, :typ, :full_name, :group, :inn, :kpp, :code_okpo, :u_address, :f_address, :tel, :other, :bank_code, :code_name, :bank_name)
   end
