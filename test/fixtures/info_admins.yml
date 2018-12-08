@@ -4,8 +4,19 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
+one:
+    post: kdnksx
+    address: discks
+    tel: dkfl
+    destination: kdjsikl
+    trans: kdjkls
+    fil: kdlfxnsk
+    bik: mlsnflkd
+    ksch: kfldnmsx
+    innkpp: kldmskl
+    gruz: kfdmsl
+    addressg: dklnkx
+    dir: kldnskl
+    main_buh: kdmsklx
 two: {}
 # column: value

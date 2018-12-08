@@ -24,24 +24,31 @@ ActiveRecord::Schema.define(version: 2018_08_29_212955) do
     t.integer "org_id"
     t.integer "contragent_id"
     t.binary "gvs"
+    t.decimal "v_gvs", precision: 10, scale: 2
     t.decimal "t_gvs", precision: 10, scale: 2
     t.decimal "o_gvs", precision: 10, scale: 2
     t.binary "hvs"
+    t.decimal "v_hvs", precision: 10, scale: 2
     t.decimal "t_hvs", precision: 10, scale: 2
     t.decimal "o_hvs", precision: 10, scale: 2
     t.binary "vgvs"
+    t.decimal "v_vgvs", precision: 10, scale: 2
     t.decimal "t_vgvs", precision: 10, scale: 2
     t.decimal "o_vgvs", precision: 10, scale: 2
     t.binary "vhvs"
+    t.decimal "v_vhvs", precision: 10, scale: 2
     t.decimal "t_vhvs", precision: 10, scale: 2
     t.decimal "o_vhvs", precision: 10, scale: 2
     t.binary "otop"
+    t.decimal "v_otop", precision: 10, scale: 2
     t.decimal "t_otop", precision: 10, scale: 2
     t.decimal "o_otop", precision: 10, scale: 2
     t.binary "exp"
+    t.decimal "v_exp", precision: 10, scale: 2
     t.decimal "t_exp", precision: 10, scale: 2
     t.decimal "o_exp", precision: 10, scale: 2
     t.binary "tbo"
+    t.decimal "v_tbo", precision: 10, scale: 2
     t.decimal "t_tbo", precision: 10, scale: 2
     t.decimal "o_tbo", precision: 10, scale: 2
     t.string "last_cb"
@@ -58,13 +65,6 @@ ActiveRecord::Schema.define(version: 2018_08_29_212955) do
     t.string "p_address"
     t.string "price_name"
     t.decimal "price_nds", precision: 10, scale: 2
-    t.decimal "v_gvs", precision: 10, scale: 6
-    t.decimal "v_hvs", precision: 10, scale: 6
-    t.decimal "v_vgvs", precision: 10, scale: 6
-    t.decimal "v_vhvs", precision: 10, scale: 6
-    t.decimal "v_otop", precision: 10, scale: 6
-    t.decimal "v_exp", precision: 10, scale: 6
-    t.decimal "v_tbo", precision: 10, scale: 6
   end
 
   create_table "contragents", force: :cascade do |t|
@@ -108,6 +108,11 @@ ActiveRecord::Schema.define(version: 2018_08_29_212955) do
     t.string "main_buh"
   end
 
+  create_table "kontragents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orgs", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
@@ -135,13 +140,14 @@ ActiveRecord::Schema.define(version: 2018_08_29_212955) do
     t.integer "number"
     t.date "date"
     t.date "month"
+    t.string "bank"
+    t.decimal "summ", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_cb"
     t.string "created_by"
     t.string "file_name"
     t.string "nazn"
-    t.decimal "summ", precision: 10, scale: 6
     t.boolean "paid"
     t.decimal "perep", precision: 10, scale: 2, default: "0.0"
   end

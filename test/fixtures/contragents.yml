@@ -4,8 +4,21 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
+one:     
+    name: fed
+    code: vds
+    typ: dlksnhc
+    full_name: dkhskh
+    group: kldjs
+    inn: dwihsi
+    kpp: dcoihs
+    code_okpo: ckoshix
+    tel: ndshnx
+    u_address: djhsk
+    f_address: edjkhsnx
+    other: dsjnx
+    bank_code: ckdsn
+    code_name: kdnsk
+    bank_name: dksnhi
 two: {}
 # column: value

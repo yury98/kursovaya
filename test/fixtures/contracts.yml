@@ -4,8 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
+one:
+    name: odshio
+    code: odhcsi
+    price: 2345
+    nds: 32
+    gvs: true
+    v_gvs: 23
+    t_gvs: 23
+    o_gvs: 529
+    price: 78562
 two: {}
 # column: value
